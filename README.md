@@ -35,16 +35,16 @@ kubectl get svc production-rabbitmqcluster -o jsonpath='{.status.loadBalancer.in
 ##username
 echo -n 'root' | base64
 ##password
-echo -n 'mypassword' | base64
+echo -n 'mypassword' | base64 \
 
-kubectl apply -f postgres-secret.yaml
-kubectl apply -f postgres-configmap.yaml
-kubectl apply -f postgres-deploy.yaml
-kubectl get all
-kubectl get pods
-psql -h 192.168.39.196 -U root --password -p 5432 mydb
+kubectl apply -f postgres-secret.yaml \ 
+kubectl apply -f postgres-configmap.yaml \
+kubectl apply -f postgres-deploy.yaml \
+kubectl get all \
+kubectl get pods \
+psql -h 192.168.39.196 -U root --password -p 5432 mydb \
 
-jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}
-rmq_url="amqp://guest:guest@192.168.29.165:5672/"
+jdbc:postgresql://${DB_HOST}:5432/${DB_NAME} \
+rmq_url="amqp://guest:guest@192.168.29.165:5672/" \
 
 
