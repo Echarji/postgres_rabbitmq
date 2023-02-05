@@ -44,3 +44,7 @@ kubectl get all
 kubectl get pods
 psql -h 192.168.39.196 -U root --password -p 5432 mydb
 
+jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}
+rmq_url="amqp://guest:guest@192.168.29.165:5672/"
+
+
