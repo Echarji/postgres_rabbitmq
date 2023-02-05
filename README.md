@@ -28,3 +28,19 @@ kubectl get all -l app.kubernetes.io/part-of=rabbitmq \
 ####RabbitMQ has a Cluster Management Web UI exposed at port 15672 \
 
 kubectl get svc production-rabbitmqcluster -o jsonpath='{.status.loadBalancer.ingress[0].ip}' \
+
+#postgres
+
+
+##username
+echo -n 'root' | base64
+##password
+echo -n 'mypassword' | base64
+
+kubectl apply -f postgres-secret.yaml
+kubectl apply -f postgres-configmap.yaml
+kubectl apply -f postgres-deploy.yaml
+kubectl get all
+kubectl get pods
+psql -h 192.168.39.196 -U root --password -p 5432 mydb
+
