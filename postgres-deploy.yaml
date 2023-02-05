@@ -32,13 +32,7 @@ spec:
                 configMapKeyRef:
                   name: postgres-configmap
                   key: postgres-dbname
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
-              volumes:
-                - name: postgredb
-                  persistentVolumeClaim:
-                    claimName: postgres-pv-claim
+   
 ---
 kind: PersistentVolume
 apiVersion: v1
