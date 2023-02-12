@@ -179,9 +179,11 @@ kubectl get nodes -o wide
 # Deploy a Public Service
 kubectl apply -f example.yaml
 echo "DEPLOYED EXAMPLE APPLICATION"
+sleep 30s
 
 # Get Service IP of Voting App
 SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAddress" -o tsv)
 
 # Add DNAT Rule for Ingress Traffic Access
 az network firewall nat-rule create --collection-name aksfwdnat --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
