@@ -3,7 +3,7 @@
 # Environment Variables
 PREFIX="aks-azfw-protection"
 RG="${PREFIX}-rg"
-LOC="eastus"  #you can change the location
+LOC="AustraliaEast"  #you can change the location
 PLUGIN=azure
 AKSNAME="${PREFIX}"
 VNET_NAME="${PREFIX}-vnet"
