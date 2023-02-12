@@ -3,7 +3,7 @@
 # Environment Variables
 PREFIX="aks-azfw-protection"
 RG="${PREFIX}-rg"
-LOC="eastus"
+LOC="eastus"  #you can change the location
 PLUGIN=azure
 AKSNAME="${PREFIX}"
 VNET_NAME="${PREFIX}-vnet"
@@ -17,7 +17,7 @@ FWROUTE_TABLE_NAME="${PREFIX}-fwrt"
 FWROUTE_NAME="${PREFIX}-fwrn"
 FWROUTE_NAME_INTERNET="${PREFIX}-fwinternet"
 # FILL IN WITH YOUR SUBSCRIPTION ID
-SUB_ID="7a06e974-7329-4485-87e7-3211b06c15aa"
+SUB_ID="7a06e974-7329-4485-87e7-3211b06c15aa" ##change this subscription id
 POD_CIDR=""
 VM_SIZE=Standard_D2s_v3
 
@@ -157,7 +157,7 @@ echo "Plugin: $PLUGIN; k8s version: $K8S_VERSION; Pod CIDR: $POD_CIDR;"
 
 # Create AKS Cluster
 az aks create -g $RG -n $AKSNAME -l $LOC ${K8S_VERSION:+-k $K8S_VERSION} \
-  --node-count 5 -s $VM_SIZE \
+  --node-count 1 -s $VM_SIZE \
   --network-plugin $PLUGIN \
   --outbound-type userDefinedRouting \
   --service-cidr 10.41.0.0/16 \
